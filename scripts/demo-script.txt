@@ -1,0 +1,21 @@
+
+
+
+
+curl http://nodejs-sample-default.apps.cluster-c95f.c95f.sandbox1682.opentlc
+.com/
+
+
+
+
+
+Bookinfo
+
+oc new-project bookinfo
+oc new-project bookinfo-istio-system
+
+oc apply -f bookinfo-control-plane -n bookinfo-istio-system
+oc apply -f bookinfo-app -n bookinfo
+
+
+watch curl http://istio-ingressgateway-bookinfo-istio-system.apps.cluster-c95f.c95f.sandbox1682.opentlc.com/productpagede
