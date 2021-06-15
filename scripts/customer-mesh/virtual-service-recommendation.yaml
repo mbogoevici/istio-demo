@@ -6,15 +6,18 @@ spec:
   hosts:
     - recommendation
   http:
+    - retries:
+        attempts: t
+        perTryTimeout: 2s
     - route:
         - destination:
             host: recommendation
             subset: v1
-          weight: 10
+          weight: 80
         - destination:
             host: recommendation
             subset: v2
-          weight: 90
+          weight: 20
         - destination:
             host: recommendation
             subset: v3
