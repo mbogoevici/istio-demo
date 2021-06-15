@@ -1,21 +1,33 @@
-
-
-
-
-curl http://nodejs-sample-default.apps.cluster-c95f.c95f.sandbox1682.opentlc
-.com/
-
-
-
-
-
-Bookinfo
-
-oc new-project bookinfo
 oc new-project bookinfo-istio-system
+oc apply -f scripts/bookinfo-control-plane -n bookinfo-istio-system
+oc new-project bookinfo
+oc apply -f scripts/bookinfo-app -n bookinfo
 
-oc apply -f bookinfo-control-plane -n bookinfo-istio-system
-oc apply -f bookinfo-app -n bookinfo
+watch curl http://istio-ingressgateway-bookinfo-istio-system.apps.cluster-466c.466c.sandbox293.opentlc.com/productpage
 
+oc new-project customer
+oc new-project customer-istio-system
+oc apply -f scripts/customer-control-plane -n customer-istio-system
+oc apply -f scripts/customer-ratings-non-meshed/customer.yaml -n customer
+oc apply -f scripts/customer-ratings-non-meshed/preference.yaml -n customer
+oc apply -f scripts/customer-ratings-non-meshed/recommendation-v1.yaml -n customer
 
-watch curl http://istio-ingressgateway-bookinfo-istio-system.apps.cluster-c95f.c95f.sandbox1682.opentlc.com/productpagede
+oc expose service customer -n customer
+
+curl http://customer-route-customer.apps.cluster-466c.466c.sandbox293.opentlc.com/
+
+oc apply -f scripts/customer-ratings-non-meshed/recommendation-v2.yaml -n customer
+oc apply -f scripts/customer-ratings-non-meshed/recommendation-v3.yaml -n customer
+
+ oc delete route customer-route -n customer
+
+ oc apply -f scripts/customer-ratings-meshed/ -n customer
+
+ curl http://istio-ingressgateway-customer-istio-system.apps.cluster-466c.466c.sandbox293.opentlc.com/
+
+oc apply -f scripts/curl
+oc get pods
+
+get v2 pod
+curl POD_IP/misbehave
+
