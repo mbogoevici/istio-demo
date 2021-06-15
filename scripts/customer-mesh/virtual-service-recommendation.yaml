@@ -7,6 +7,7 @@ spec:
     - recommendation
   http:
     - route:
+        timeout: 1s
         - destination:
             host: recommendation
             subset: v1
@@ -19,4 +20,3 @@ spec:
             host: recommendation
             subset: v3
           weight: 0
-        timeout: 1s
