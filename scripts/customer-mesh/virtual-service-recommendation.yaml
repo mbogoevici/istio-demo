@@ -6,9 +6,6 @@ spec:
   hosts:
     - recommendation
   http:
-    - retries:
-        attempts: 3
-        perTryTimeout: 2s
     - route:
         - destination:
             host: recommendation
@@ -22,3 +19,6 @@ spec:
             host: recommendation
             subset: v3
           weight: 0
+        retries:
+          attempts: 3
+          perTryTimeout: 2s
