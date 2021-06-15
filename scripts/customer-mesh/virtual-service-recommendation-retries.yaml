@@ -9,7 +9,6 @@ spec:
     - route:
         - destination:
             host: recommendation
-            subset: v1
       retries:
         attempts: 3
         perTryTimeout: 2s
