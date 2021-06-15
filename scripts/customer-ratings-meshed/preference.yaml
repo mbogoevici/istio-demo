@@ -21,6 +21,7 @@ spec:
         sidecar.istio.io/proxyCPU: "500m"
         sidecar.istio.io/proxyMemory: 400Mi
     spec:
+      serviceAccountName: preference
       containers:
       - env:
         - name: JAVA_OPTIONS
