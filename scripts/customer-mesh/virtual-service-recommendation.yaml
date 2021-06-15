@@ -7,7 +7,7 @@ spec:
     - recommendation
   http:
     - retries:
-        attempts: t
+        attempts: 3
         perTryTimeout: 2s
     - route:
         - destination:
