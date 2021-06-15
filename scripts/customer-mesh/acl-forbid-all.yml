@@ -3,14 +3,11 @@ kind: AuthorizationPolicy
 metadata:
   name: deny-method-get
 spec:
-  selector:
-    matchLabels:
-      app: recommendation
   action: DENY
   rules:
     - from:
         - source:
-            - notPrincipals: ["cluster.local/ns/customer/sa/preference"]
+            - notPrincipals: [ "cluster.local/ns/customer/sa/preference" ]
       to:
         - operation:
             methods: ["GET"]
