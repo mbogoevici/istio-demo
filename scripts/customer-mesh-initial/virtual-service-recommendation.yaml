@@ -10,12 +10,15 @@ spec:
         - destination:
             host: recommendation
             subset: v1
-          weight: 33
+          weight: 80
         - destination:
             host: recommendation
             subset: v2
-          weight: 33
+          weight: 20
         - destination:
             host: recommendation
             subset: v3
-          weight: 34
+          weight: 0
+        retries:
+          attempts: 3
+          perTryTimeout: 2s
