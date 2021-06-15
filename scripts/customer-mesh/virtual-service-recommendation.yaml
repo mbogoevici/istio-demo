@@ -10,12 +10,12 @@ spec:
         - destination:
             host: recommendation
             subset: v1
-          weight: 30
+          weight: 10
         - destination:
             host: recommendation
             subset: v2
-          weight: 30
+          weight: 90
         - destination:
             host: recommendation
             subset: v3
-          weight: 40
+          weight: 0
