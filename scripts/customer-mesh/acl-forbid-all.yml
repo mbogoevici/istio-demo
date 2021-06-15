@@ -11,6 +11,6 @@ spec:
     - from:
         - source:
             - notPrincipals: ["cluster.local/ns/customer/sa/preference"]
-    - to:
+      to:
         - operation:
             methods: ["GET"]
