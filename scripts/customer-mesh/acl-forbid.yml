@@ -8,6 +8,9 @@ spec:
       app: recommendation
   action: DENY
   rules:
+    - from:
+        - source:
+            - notPrincipals: ["cluster.local/ns/customer/sa/preference"]
     - to:
         - operation:
             methods: ["GET"]
