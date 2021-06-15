@@ -10,7 +10,7 @@ spec:
   rules:
     - from:
         - source:
-            - notPrincipals: ["cluster.local/ns/customer/sa/preference"]
-    - to:
+            notPrincipals: ["cluster.local/ns/customer/sa/customer"]
+      to:
         - operation:
             methods: ["GET"]
