@@ -6,6 +6,9 @@ spec:
   hosts:
     - recommendation
   http:
-    retries:
-      attempts: 10
-      perTryTimeout: 2s
+    - route:
+        - destination:
+            host: recommendation
+        retries:
+          attempts: 10
+          perTryTimeout: 2s
